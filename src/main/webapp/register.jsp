@@ -12,7 +12,56 @@
     <!-- 학생 이름과 학번 -->
     <meta name="author" content="???" />
     <meta name="description" content="???" />
-
+    
+    <!--  -->
+ 
+	 <script type="text/javascript">
+	 	function checkMember(){
+	 		
+	 		var regExpId=/^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+	 		var regExpName=/^[가-힣]*$/;
+	 		var regExpPasswd=/^[0-9]*$/;
+	 		var regExpPhone=/^\d{3}-\d{3,4}-\d{4}$/;
+	 		
+	 		var form=document.Member;
+	 		
+	 		var id=form.id.value;
+	 		var name=form.name.value;
+	 		var passwd=form.passwd.value;
+	 		var phone=form.phone1.value + "-"" + form.phone2.value + "-" + form.phone3.value;
+	 		
+	 		
+	 		const submitEl = document.querySelector( ".btnLogin" );
+			const formEl = document.forms[0];
+	 
+			submitEl.addEventListener( "click", function( event ) {
+	   		event.preventDefault();
+	 
+	   	    const frmId = formEl.username;
+	  	    const frmPw = formEl.password;
+	 
+	        const idValue = formEl.username.value.trim();
+	        const pwValue = formEl.password.value.trim();
+	 
+	        if( idValue === "" ) {
+	        alert( "아이디를 입력해 주세요." );
+	        frmId.focus();
+	          return;
+	        }
+	        if( pwValue === "" ) {
+	        alert( "비밀번호를 입력해 주세요." );
+	        frmPw.focus();
+	          return;
+	        }
+	        this.submit();
+	});
+	 	}
+	 	</script>
+ 
+ 
+ 
+ 
+ 
     <!-- CSS 파일에 대한 link테그를 수정하십시오 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css" />
     <link
@@ -31,6 +80,21 @@
     <!-- HEADER -->
 
     <jsp:include page="header.jsp"></jsp:include>
+    
+    <!--  -->
+    
+    <h3>회원 가입</h3>
+    <form action="register.jsp" name="Member" method="post">
+    	<p> 아이디 : <input type="text" name="id">
+    	<p> 비밀번호 : <input type="password" name="passwd">
+    	<p> 이름 : <input type="text" name="name">
+    	<p> <input type="button" value="가입하기" onclick="checkMember()"></form>
+    	
+    	
+    	
+
+    	
+    
 
     <!-- MAIN 페이지 내용 -->
     <main class="">

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>tomcat</display-name>
+  <!-- 시큐리티 역할(role) 설정 -->
+  <security-role>
+  	<role-name>sec</role-name>
+  </security-role>
+  <security-role>
+  	<role-name>role1</role-name>
+  </security-role>
+
+
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>sec</web-resource-name>
+  		<url-pattern>register.jsp</url-pattern>
+  		<http-method>GET</http-method>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<description></description>
+  		<role-name>role1</role-name>
+  	</auth-constraint>
+  </security-constraint>
+
+
+  <login-config>
+
+
+	<auth-method>FORM</auth-method>
+	<form-login-config>
+		<!-- 로그인 URL 설정 -->
+		<form-login-page>/register.jsp</form-login-page>
+		<!-- 인증(로그인) 실패시 실패 페이지 성정 -->
+		<form-error-page>/thanks.jsp</form-error-page>
+	</form-login-config>
+  </login-config>
+</web-app>
